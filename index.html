@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GIT COLLABORATION</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="row">
@@ -23,7 +28,7 @@
         <div class="row">
             <div class="col-8 mx-auto shadow" style="margin-top: 8%; height: 70vh">
                 <h1 class="display-2">Count: <span id="counter2">100</span></h1>
-                <button onclick="decreaseCount()">Decrease Count</button>
+                <button onclick="decreaseCount()" id="decreaseBtn">Decrease Count</button>
                 <button onclick="stopCount2()">Stop Count</button>
             </div>
         </div>
@@ -41,10 +46,10 @@
             myInterval = setInterval(countFunction, 10);
         }
 
-        const countFunction = ()=>{
-                let initialCount = Number(document.getElementById("counter").innerHTML);
-                let newCount = initialCount + 1;
-                document.getElementById("counter").innerHTML = newCount;
+        const countFunction = () => {
+            let initialCount = Number(document.getElementById("counter").innerHTML);
+            let newCount = initialCount + 1;
+            document.getElementById("counter").innerHTML = newCount;
         }
 
         const stopCount = () => {
@@ -55,28 +60,31 @@
 
         const decreaseCount = () => {
 
-// setInterval(handler, timeout);
+            // setInterval(handler, timeout);
 
-myInterval2 = setInterval(secondCountFunction, 100);
-}
+            myInterval2 = setInterval(secondCountFunction, 10);
+        }
 
-const secondCountFunction = () =>{
-    let initial= Number(document.getElementById("counter2").innerHTML);
-    let new2 = initial -1;
-    document.getElementById("counter2").innerHTML = new2;
-    if (new2 <= 20){
-        document.getElementById("counter2").style.color = "red" 
-    }
-    if (new2 === 0){
-        stopCount2()
-    }
-}
+        const secondCountFunction = () => {
+            let initial = Number(document.getElementById("counter2").innerHTML);
+            let new2 = initial - 1;
+            document.getElementById("counter2").innerHTML = new2;
+            if (new2 <= 20) {
+                document.getElementById("counter2").style.color = "red"
+            }
+            if (new2 <= 0) {
+                stopCount2()
+            }
 
-const stopCount2 = () => {
+            document.getElementById('decreaseBtn').disabled = (new2 === 0);
+        }
+
+        const stopCount2 = () => {
             clearInterval(myInterval2);
         }
 
 
     </script>
 </body>
+
 </html>
